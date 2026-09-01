@@ -1,0 +1,91 @@
+NEXORA - MATRIZ DE TRAZABILIDAD
+Versión 1.0 derivada de NEXORA_IEEE830, Revisión 2
+
+Objetivo: vincular historias de usuario, requisitos funcionales, casos de uso, criterios de aceptación y prioridad. La matriz demuestra cobertura documental; no certifica que el desarrollo o las pruebas ya se hayan ejecutado.
+
+HISTORIA / REQUISITO | CASOS DE USO | CRITERIO | PRIORIDAD
+HU01 / RF01 | CU01, CU02 | CA01 | Must
+HU02 / RF02 | CU03, CU04 | CA02 | Must
+HU03 / RF03 | CU05, CU06 | CA03 | Must
+HU04 / RF04 | CU07, CU08 | CA04 | Must
+HU05 / RF05 | CU07, CU09 | CA05 | Must
+HU06 / RF06 | CU07, CU10 | CA06 | Must
+HU07 / RF07 | CU11, CU12 | CA07 | Must
+HU08 / RF08 | CU11, CU13 | CA08 | Must
+HU09 / RF09 | CU14, CU15 | CA09 | Must
+HU10 / RF10 | CU14, CU16 | CA10 | Must
+HU11 / RF11 | CU17, CU18 | CA11 | Must
+HU12 / RF12 | CU17, CU19 | CA12 | Must
+HU13 / RF13 | CU17, CU20 | CA13 | Must
+HU14 / RF14 | CU21, CU22 | CA14 | Should
+HU15 / RF15 | CU21, CU23 | CA15 | Should
+HU16 / RF16 | CU21, CU24 | CA16 | Should
+HU17 / RF17 | CU25 | CA17 | Must
+HU18 / RF18 | CU26 | CA18 | Should
+HU19 / RF19 | CU27 | CA19 | Could
+HU20 / RF20 | CU28 | CA20 | Must
+HU21 / RF21 | CU29 | CA21 | Must
+HU22 / RF22 | CU30 | CA22 | Should
+HU23 / RF23 | CU31 | CA23 | Must
+HU24 / RF24 | CU32 | CA24 | Should
+RF25 | Transversal, sin nuevo óvalo | CA25 | Must
+
+CATÁLOGO DE CASOS DE USO
+
+CU01 Autenticar usuario
+CU02 Validar credenciales
+CU03 Gestionar roles
+CU04 Asignar permisos
+CU05 Administrar usuarios
+CU06 Configurar usuario
+CU07 Administrar empleados
+CU08 Registrar empleado
+CU09 Actualizar empleado
+CU10 Consultar empleado
+CU11 Gestionar asistencia
+CU12 Registrar asistencia
+CU13 Consultar asistencia
+CU14 Gestionar novedades laborales
+CU15 Registrar novedad
+CU16 Consultar novedades
+CU17 Gestionar nómina
+CU18 Calcular nómina
+CU19 Consultar nómina
+CU20 Consultar histórico de pagos
+CU21 Consultar información personal
+CU22 Consultar mis asistencias
+CU23 Consultar mis novedades
+CU24 Consultar mi nómina
+CU25 Visualizar dashboard de indicadores
+CU26 Generar reportes administrativos
+CU27 Exportar reportes
+CU28 Consultar al asistente IA
+CU29 Detectar anomalías
+CU30 Generar resúmenes mensuales
+CU31 Generar alertas
+CU32 Generar recomendaciones
+
+TRAZABILIDAD DE CALIDAD
+
+GRUPO RNF | REQUISITOS APLICABLES | VERIFICACIÓN
+RNF-R01-R04 | RF01-RF24; tiempos de IA por separado | Medir percentiles con carga y datos de prueba acordados.
+RNF-S01-S07 | RF01-RF25 | Probar cifrado, sesiones, permisos y denegación de datos ajenos.
+RNF-F01-F04 / RNF-D01-D02 | Persistencia, cálculo y plataforma | Provocar fallo transaccional, restaurar respaldo y medir disponibilidad.
+RNF-U01-U04 / RNF-M01-M03 | Interfaces y módulos completos | Ejecutar pruebas de tarea, teclado, tamaños de pantalla y compatibilidad.
+RNF-IA01-IA05 | RF20-RF24 / RF25 | Revisar evidencia, denegación por permisos, incertidumbre y ausencia de decisiones automáticas.
+
+CRITERIOS TRANSVERSALES DE CONTROL
+
+- CA01-CA24 verifican de forma directa las historias HU01-HU24 y los requisitos RF01-RF24.
+- CA25 verifica la trazabilidad técnica de RF25.
+- Los 32 casos de uso del diagrama están cubiertos por la matriz.
+- Una correspondencia documental no equivale a una prueba aprobada; el estado de ejecución debe registrarse durante la fase 0.4 Pruebas.
+- Las pruebas de acceso deben incluir casos positivos y negativos.
+- Las pruebas de IA deben comprobar permisos, evidencia, incertidumbre y continuidad del sistema cuando el servicio no esté disponible.
+
+LEYENDA DE PRIORIDAD
+
+Must: obligatorio para el MVP.
+Should: importante.
+Could: deseable.
+Won't: fuera del MVP actual.
