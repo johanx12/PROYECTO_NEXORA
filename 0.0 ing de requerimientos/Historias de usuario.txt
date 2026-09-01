@@ -1,0 +1,166 @@
+NEXORA - HISTORIAS DE USUARIO
+Versión 1.0 derivada de NEXORA_IEEE830, Revisión 2
+
+Convenciones:
+- Must: obligatorio para el MVP.
+- Should: importante, incluido si la capacidad del proyecto lo permite.
+- Could: deseable.
+- Cada historia se relaciona con un requisito funcional (RF), uno o más casos de uso (CU) y un criterio de aceptación (CA).
+
+HU01 - INICIAR SESIÓN [Must]
+Actor: Usuario autorizado
+Historia: Como usuario autorizado, quiero iniciar sesión para acceder a las funciones permitidas.
+Trazabilidad: RF01; CU01, CU02; CA01.
+Criterio de aceptación: Credenciales válidas abren sesión; una contraseña incorrecta o una cuenta inactiva deniega el acceso sin revelar cuál dato falló.
+
+HU02 - GESTIONAR ROLES [Must]
+Actor: Administrador
+Historia: Como administrador, quiero gestionar roles para controlar las operaciones permitidas.
+Trazabilidad: RF02; CU03, CU04; CA02.
+Criterio de aceptación: Un permiso retirado impide la operación en el servidor; cambiar un rol no otorga acceso global a datos laborales.
+
+HU03 - ADMINISTRAR USUARIOS [Must]
+Actor: Administrador
+Historia: Como administrador, quiero administrar usuarios para mantener cuentas habilitadas según su función.
+Trazabilidad: RF03; CU05, CU06; CA03.
+Criterio de aceptación: Se rechazan identificadores duplicados; desactivar una cuenta impide nuevas sesiones y revoca las activas.
+
+HU04 - REGISTRAR EMPLEADOS [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero registrar empleados para centralizar los datos del personal.
+Trazabilidad: RF04; CU07, CU08; CA04.
+Criterio de aceptación: Un documento duplicado o salario negativo impide guardar; un registro válido recibe identificador y queda consultable.
+
+HU05 - ACTUALIZAR EMPLEADOS [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero actualizar empleados para mantener vigente su información laboral.
+Trazabilidad: RF05; CU07, CU09; CA05.
+Criterio de aceptación: La actualización válida aparece en la ficha; las nóminas calculadas previamente conservan los valores usados.
+
+HU06 - CONSULTAR EMPLEADOS [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero consultar empleados para localizar la información necesaria.
+Trazabilidad: RF06; CU07, CU10; CA06.
+Criterio de aceptación: Los filtros devuelven solo coincidencias; una búsqueda sin resultados informa esa condición.
+
+HU07 - REGISTRAR ASISTENCIA [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero registrar asistencia para controlar la presencia diaria.
+Trazabilidad: RF07; CU11, CU12; CA07.
+Criterio de aceptación: No se admite doble registro para el mismo empleado y día; si hay horas, la salida no puede preceder a la entrada.
+
+HU08 - CONSULTAR ASISTENCIA [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero consultar asistencia para revisar el historial de presencia.
+Trazabilidad: RF08; CU11, CU13; CA08.
+Criterio de aceptación: Cada registro coincide con el empleado y rango solicitado; los totales coinciden con las filas filtradas.
+
+HU09 - REGISTRAR NOVEDADES LABORALES [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero registrar novedades laborales para documentar eventos que afectan la nómina.
+Trazabilidad: RF09; CU14, CU15; CA09.
+Criterio de aceptación: Se exige empleado existente, tipo válido y fecha; un descuento se guarda como concepto de descuento, no como bonificación.
+
+HU10 - CONSULTAR NOVEDADES LABORALES [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero consultar novedades laborales para revisar incidencias del periodo.
+Trazabilidad: RF10; CU14, CU16; CA10.
+Criterio de aceptación: Los filtros se combinan correctamente; una consulta no modifica el registro ni su valor.
+
+HU11 - CALCULAR NÓMINA [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero calcular nómina para obtener el valor que corresponde a cada empleado.
+Trazabilidad: RF11; CU17, CU18; CA11.
+Criterio de aceptación: Con devengado de $1.000.000 y deducciones de $150.000, el neto es $850.000; recalcular no duplica el periodo.
+
+HU12 - CONSULTAR NÓMINA [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero consultar nómina para verificar sus conceptos y resultados.
+Trazabilidad: RF12; CU17, CU19; CA12.
+Criterio de aceptación: La suma del detalle coincide con los totales guardados; calcular no se muestra como pago realizado.
+
+HU13 - CONSULTAR HISTÓRICO DE PAGOS [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero consultar el histórico de pagos para verificar los pagos registrados.
+Trazabilidad: RF13; CU17, CU20; CA13.
+Criterio de aceptación: Sin pago registrado se muestra "sin pago registrado"; nunca se deduce que una nómina calculada ya fue pagada.
+
+HU14 - CONSULTAR MIS ASISTENCIAS [Should]
+Actor: Empleado
+Historia: Como empleado, quiero consultar mis asistencias para verificar mi registro de presencia.
+Trazabilidad: RF14; CU21, CU22; CA14.
+Criterio de aceptación: Cambiar el ID de empleado en la petición no permite ver registros ajenos; el periodo filtra solo datos propios.
+
+HU15 - CONSULTAR MIS NOVEDADES [Should]
+Actor: Empleado
+Historia: Como empleado, quiero consultar mis novedades para conocer mis incidencias laborales.
+Trazabilidad: RF15; CU21, CU23; CA15.
+Criterio de aceptación: No se devuelven novedades ajenas por búsqueda, URL ni API; la vista no permite edición.
+
+HU16 - CONSULTAR MI NÓMINA [Should]
+Actor: Empleado
+Historia: Como empleado, quiero consultar mi nómina para revisar mis valores liquidados.
+Trazabilidad: RF16; CU21, CU24; CA16.
+Criterio de aceptación: La identidad se resuelve en el servidor; el total mostrado coincide con la nómina del empleado autenticado.
+
+HU17 - VISUALIZAR DASHBOARD DE INDICADORES [Must]
+Actor: Gerente
+Historia: Como gerente, quiero visualizar el dashboard de indicadores para evaluar la situación del personal.
+Trazabilidad: RF17; CU25; CA17.
+Criterio de aceptación: Cambiar el periodo recalcula indicadores; cada total coincide con los registros filtrados y muestra el periodo usado.
+
+HU18 - GENERAR REPORTES ADMINISTRATIVOS [Should]
+Actor: Gerente
+Historia: Como gerente, quiero generar reportes administrativos para analizar resultados por periodo.
+Trazabilidad: RF18; CU26; CA18.
+Criterio de aceptación: El reporte conserva los filtros solicitados; sus totales coinciden con la fuente y una consulta vacía se informa.
+
+HU19 - EXPORTAR REPORTES [Could]
+Actor: Gerente
+Historia: Como gerente, quiero exportar reportes para compartir resultados autorizados.
+Trazabilidad: RF19; CU27; CA19.
+Criterio de aceptación: El archivo abre correctamente y mantiene los totales del reporte; sin permiso de exportación se rechaza la descarga.
+
+HU20 - CONSULTAR AL ASISTENTE IA [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero consultar al asistente IA para interpretar información laboral autorizada.
+Trazabilidad: RF20; CU28; CA20.
+Criterio de aceptación: Una consulta fuera de permisos se rechaza; si no hay datos suficientes se informa, sin inventar resultados.
+
+HU21 - DETECTAR ANOMALÍAS CON IA [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero detectar anomalías con apoyo de IA para identificar variaciones que requieren revisión.
+Trazabilidad: RF21; CU29; CA21.
+Criterio de aceptación: Cada anomalía identifica indicador, periodo, base y variación; con base cero no se presenta un porcentaje indefinido.
+
+HU22 - GENERAR RESÚMENES MENSUALES CON IA [Should]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero generar resúmenes mensuales con IA para sintetizar las novedades del periodo.
+Trazabilidad: RF22; CU30; CA22.
+Criterio de aceptación: El resumen identifica mes y datos utilizados; las cifras coinciden con las consultas del sistema.
+
+HU23 - GENERAR ALERTAS DE NÓMINA [Must]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero generar alertas de nómina para revisar inconsistencias antes de usar los resultados.
+Trazabilidad: RF23; CU31; CA23.
+Criterio de aceptación: Una regla activada produce una alerta trazable sin alterar la liquidación; una caída de IA no impide calcular nómina.
+
+HU24 - GENERAR RECOMENDACIONES CON IA [Should]
+Actor: RR. HH.
+Historia: Como RR. HH., quiero generar recomendaciones con IA para orientar la revisión de nóminas e históricos.
+Trazabilidad: RF24; CU32; CA24.
+Criterio de aceptación: La recomendación cita el periodo y sus datos; no realiza pagos, cambios salariales ni sanciones automáticas.
+
+REQUISITO TRANSVERSAL
+
+RF25 - Conservar trazabilidad de operaciones [Must]
+El sistema debe registrar usuario o servicio, fecha, entidad, operación y resultado de cambios críticos y análisis de IA.
+Criterio CA25: registrar un cambio de empleado y un análisis; ambos deben vincularse con su responsable, fecha y resultado sin almacenar contraseñas.
+
+REGLAS DE ACEPTACIÓN COMUNES
+
+- Toda operación debe comprobar sesión y permiso en el servidor.
+- Las pruebas deben cubrir tanto el resultado autorizado como el rechazo de accesos no permitidos.
+- Ninguna función de IA puede modificar datos laborales ni ejecutar decisiones automáticas.
+- Los resultados de IA deben identificar periodo, evidencia y limitaciones.
+- La caída del servicio de IA no debe bloquear la gestión principal del sistema.

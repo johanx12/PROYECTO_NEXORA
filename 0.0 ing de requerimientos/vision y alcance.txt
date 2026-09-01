@@ -1,0 +1,141 @@
+NEXORA - VISIÓN Y ALCANCE
+Sistema Inteligente de Gestión Empresarial
+Versión 1.0 derivada de NEXORA_IEEE830, Revisión 2
+Fecha base: 31 de agosto de 2026
+
+1. PROPÓSITO DEL DOCUMENTO
+
+Este documento establece la visión del producto, el problema que atiende, los objetivos, los interesados, los límites del producto mínimo viable (MVP), las restricciones y los criterios generales de éxito de NEXORA. Sirve como marco para análisis, diseño, desarrollo, pruebas y evaluación académica.
+
+2. PROBLEMA Y OPORTUNIDAD
+
+Las pequeñas y medianas empresas suelen administrar la información de empleados, asistencia, novedades laborales y nómina mediante hojas de cálculo, mensajes y documentos separados. Esta fragmentación produce registros duplicados, errores manuales, poca trazabilidad, dificultad para consultar históricos y demoras en la elaboración de reportes confiables.
+
+Existe la oportunidad de centralizar la gestión laboral y convertir los datos históricos autorizados en indicadores, alertas, explicaciones, resúmenes y recomendaciones. La inteligencia artificial debe apoyar la interpretación de la información, sin reemplazar las reglas deterministas de nómina ni la responsabilidad humana.
+
+3. VISIÓN DEL PRODUCTO
+
+Para pequeñas y medianas empresas que necesitan administrar de forma confiable su información laboral, NEXORA es una plataforma web empresarial que centraliza empleados, asistencia, novedades, nómina y reportes, e incorpora inteligencia artificial controlada para generar análisis explicables. A diferencia de una colección de archivos dispersos o de un chatbot con acceso libre a los datos, NEXORA aplica permisos, minimización de información, reglas de negocio y trazabilidad en cada operación.
+
+Lema: "El núcleo inteligente de la empresa."
+
+4. OBJETIVO GENERAL
+
+Diseñar e implementar un MVP web que consolide la información laboral de una pyme, reduzca errores manuales, facilite la consulta de históricos y produzca indicadores y análisis administrativos verificables, respetando los roles, la privacidad y la trazabilidad.
+
+5. OBJETIVOS ESPECÍFICOS
+
+1) Implementar autenticación, sesiones y autorización basada en roles y permisos.
+2) Centralizar el registro, actualización y consulta de empleados.
+3) Registrar y consultar asistencia, ausencias, horas extra y novedades laborales.
+4) Calcular y consultar nómina con reglas deterministas, detalle reproducible e histórico separado de pagos acreditados.
+5) Proporcionar al empleado acceso de solo lectura a su propia información autorizada.
+6) Presentar al gerente indicadores y reportes filtrables por periodo y departamento.
+7) Integrar funciones de IA para consultas, anomalías, resúmenes, alertas y recomendaciones basadas en datos mínimos autorizados.
+8) Registrar operaciones críticas y análisis de IA para mantener trazabilidad.
+
+6. INTERESADOS Y USUARIOS
+
+- Administrador de la empresa: administra usuarios, roles y permisos. Este rol no recibe acceso automático a nómina o datos de RR. HH.
+- Responsable de RR. HH.: gestiona empleados, asistencia, novedades, nómina, históricos y funciones de IA relacionadas con información laboral autorizada.
+- Gerente: consulta el dashboard, genera reportes administrativos y exporta resultados; no modifica empleados ni calcula nómina por este rol.
+- Empleado: consulta únicamente sus asistencias, novedades y nóminas habilitadas, sin capacidad de edición.
+- Asistente IA: servicio secundario de apoyo; no es una cuenta humana, no posee permisos administrativos y no accede directamente a toda la base de datos.
+- Docente evaluador: revisa alcance, trazabilidad, arquitectura y cumplimiento académico.
+- Responsable del proyecto: Johan Perico, analista y desarrollador.
+
+7. ALCANCE DEL MVP
+
+7.1 Capacidades incluidas
+
+- Inicio y cierre de sesión para cuentas habilitadas.
+- Gestión de usuarios, roles y permisos.
+- Registro, actualización y consulta de empleados; departamento como catálogo de referencia.
+- Registro y consulta de asistencias, ausencias y horas extra.
+- Registro y consulta de novedades laborales, como incapacidades, bonificaciones y descuentos.
+- Cálculo y consulta de nómina por empleado y periodo, con devengado, deducciones, neto y detalle de conceptos.
+- Consulta separada del histórico de pagos acreditados.
+- Consulta personal de asistencias, novedades y nómina por parte del empleado autenticado.
+- Dashboard con empleados activos, ausencias, horas extra y costo de nómina.
+- Generación de reportes administrativos y exportación autorizada a PDF o XLSX.
+- Asistente empresarial de IA para consultas en lenguaje natural dentro del contexto autorizado.
+- Detección de anomalías en asistencia, novedades y nómina.
+- Generación de resúmenes mensuales, alertas y recomendaciones explicables.
+- Auditoría de cambios críticos y trazabilidad de consultas y resultados de IA.
+
+7.2 Fuera del alcance inicial
+
+- Módulos independientes de vacaciones, contratos, desempeño, selección de personal, inventario y contabilidad.
+- Administración independiente de departamentos.
+- Flujo independiente de cierre o aprobación de nómina.
+- Captura manual de pagos, transferencias bancarias o pagos automáticos.
+- Recuperación de acceso en esta revisión.
+- Integración con relojes biométricos, lectores de tarjetas u otros dispositivos de marcación.
+- Retroalimentación o calificación de resultados de IA.
+- Predicciones de contratación, despido o decisiones laborales automáticas.
+- Sustitución completa de sistemas contables, financieros o ERP existentes.
+
+8. LÍMITES Y REGLAS FUNDAMENTALES
+
+- Toda operación debe validar sesión y permiso en el servidor.
+- Un empleado solo puede consultar el id_empleado vinculado a su sesión.
+- Neto = devengado - deducciones. Los importes oficiales se calculan mediante reglas deterministas; la IA no calcula la nómina oficial.
+- Recalcular un periodo no debe duplicar conceptos ni descuentos y debe conservar trazabilidad de versiones.
+- Calcular nómina no equivale a registrar un pago. El histórico muestra únicamente pagos acreditados.
+- La modalidad salarial debe distinguir salario mensual de tarifa diaria.
+- Los importes deben usar aritmética decimal y una regla de redondeo documentada.
+- Las funciones de IA son opcionales: si el servicio falla, las funciones principales continúan disponibles.
+- La IA debe separar hechos observados, hipótesis y recomendaciones y nunca ejecutar pagos, sanciones, despidos ni cambios de registros.
+
+9. SUPOSICIONES Y DEPENDENCIAS
+
+- La empresa registrará datos completos, correctos y oportunos.
+- Cada usuario tendrá un identificador único y credenciales personales.
+- Los administradores configurarán correctamente roles y permisos.
+- La empresa mantendrá reglas de nómina validadas por personal competente.
+- El sistema contará con una base de datos relacional, respaldo y mecanismo de restauración.
+- Las consultas de IA dependerán de un servicio disponible y de datos históricos suficientes.
+- Los usuarios dispondrán de conexión a internet y navegadores modernos.
+- Los resultados de IA se utilizarán como apoyo y requerirán revisión humana.
+
+10. RESTRICCIONES
+
+- El producto debe funcionar como aplicación web.
+- Las funciones visibles dependen del rol y de los permisos asignados.
+- La IA no puede consultar registros completos sin mediación de la lógica de negocio.
+- RR. HH. debe revisar los resultados de nómina antes de utilizarlos.
+- La tecnología concreta de frontend, backend, base de datos y proveedor de IA se define durante el diseño técnico.
+- La calidad de los análisis depende de la integridad y cantidad de datos disponibles.
+- El alcance académico debe mantenerse dentro de los módulos del MVP.
+
+11. CRITERIOS GENERALES DE ÉXITO
+
+- Los requisitos funcionales RF01-RF25 mantienen trazabilidad con historias, casos de uso y criterios de aceptación.
+- El 95% de las operaciones interactivas RF01-RF19 responde en 3 segundos o menos bajo el escenario de prueba definido: 50 sesiones, 500 empleados y 12 meses de datos.
+- El dashboard carga en 4 segundos o menos en el 95% de las consultas bajo la carga definida.
+- Los reportes mensuales de hasta 500 empleados se generan en 10 segundos o menos en el 95% de los casos.
+- Con 50 usuarios simultáneos durante 15 minutos, la tasa de errores no supera el 1%.
+- La aplicación cifra las comunicaciones, protege las contraseñas con hash y sal, aplica RBAC y registra acciones críticas.
+- Un empleado no puede obtener datos de otro empleado por interfaz, URL ni API.
+- La aplicación es utilizable en anchos de 360, 768 y 1366 px y sus funciones principales son operables por teclado.
+- Las respuestas de IA indican periodo y evidencia, respetan permisos, declaran incertidumbre y no realizan decisiones automáticas.
+- La indisponibilidad de IA no bloquea las funciones RF01-RF19.
+
+12. PRIORIZACIÓN DEL MVP
+
+Must: autenticación; roles; usuarios; empleados; asistencia; novedades; nómina; histórico de pagos; dashboard; consulta IA; anomalías; alertas; trazabilidad.
+
+Should: consultas personales del empleado; reportes administrativos; resúmenes mensuales y recomendaciones con IA.
+
+Could: exportación de reportes.
+
+Won't en el MVP: las funciones enumeradas como fuera de alcance en la sección 7.2.
+
+13. EVOLUCIÓN PREVISIBLE
+
+Después de validar el MVP podrán evaluarse vacaciones, contratos, evaluaciones de desempeño, solicitudes internas, selección de personal e integraciones contables. Las predicciones avanzadas solo deberán incorporarse cuando existan datos suficientes, controles de calidad y una justificación empresarial clara.
+
+14. FUENTE Y CONTROL
+
+Fuente oficial: NEXORA_IEEE830.docx, Revisión 2.
+Este documento resume la visión y el alcance; no reemplaza la especificación detallada de requisitos.
